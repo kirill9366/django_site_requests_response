@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href='{% static "css/style.css" %}'>
+	<title>urls</title>
+</head>
+<body>
+	<div class="container">
+	<div class="tblock thead">
+		<p class="url">url</p>
+		<p class="status_response_head">status</p>
+	</div>
+	{% for url_model in url_models%}
+	<div class="tblock" id={{url_model.id}}>
+		<a class="url" href="{{ url_model.url }}">{{ url_model.url }}</a>
+		{% if url_model.url_status %}
+		<div class="status_response_body active"></div>
+		{% else %}
+		<div class="status_response_body passive"></div>
+		{% endif %}
+
+	</div>
+	{% endfor %}
+	</div>
+	<div class="interval" style="display: none;">{{interval}}</div>
+</body>
+<script src='{% static "js/jquery-3.4.1.min.js"%}'></script>
+<script src='{% static "js/main1.js" %}' defer></script>
+</html>
